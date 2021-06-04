@@ -80,12 +80,28 @@ WSGI_APPLICATION = 'tutorial01.wsgi.application'
 # NaME
 # agregar user password y host
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'django',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
+
+# comandos para crear usuarios en postgreSQL desde terminal
+# create user myuser with encrypted password 'mypass';
+#  grant all privileges on database mydb to myuser;
 
 
 # Password validation
@@ -112,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC-3'  # horario de argentina
+TIME_ZONE = 'UTC' 
 
 USE_I18N = True
 
