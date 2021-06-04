@@ -75,6 +75,11 @@ WSGI_APPLICATION = 'tutorial01.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#PostgreSQL, --> install psycopg2
+# ENGINE django.db.backends.postgresql_psycopg2',
+# NaME
+# agregar user password y host
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -107,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC-3'  # horario de argentina
 
 USE_I18N = True
 
