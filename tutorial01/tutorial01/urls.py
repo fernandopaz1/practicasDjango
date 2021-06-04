@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('polls/', include('polls.urls')),  # agrego todos los paths que hay definidos en polls.url.py y los monto sobre polls/
+
+    # Para acceder a cada respuesta que programo en polls.views.py desde el navegador, hay que agregarle a localhos/polls
+    # el path que le configure  en polls.urls.py
+
+    # Ej1.:      index   tiene '' como path   ------> accedo a su respuesta con localhost/polls/   <-- aca hay un string vacio
+    # Ej2.:      about  tiene 'about/' como path   ------> accedo a su respuesta con localhost/polls/about/   
 ]
