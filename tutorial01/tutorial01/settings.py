@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'livereload',   # Para edicion en tiempo real
+    'polls.apps.PollsConfig',   # Aca decimos que esta instalada mediante la clase PollsConfig en el archivo polls/apps.py
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',  # Para el livereload
 ]
 
 ROOT_URLCONF = 'tutorial01.urls'
@@ -76,6 +79,9 @@ WSGI_APPLICATION = 'tutorial01.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 #PostgreSQL, --> install psycopg2
+# Para manejar las dependencias bien instalarlo en un environment
+# pip freeze > requerimientos.txt nos guarda los requerimientos en el archivo
+
 # ENGINE django.db.backends.postgresql_psycopg2',
 # NaME
 # agregar user password y host
@@ -128,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC' 
+TIME_ZONE = 'America/Buenos_Aires'   # Zona horaria de Buenos Aires 
 
 USE_I18N = True
 
