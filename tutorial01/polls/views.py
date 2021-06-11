@@ -1,9 +1,10 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-
+from django.urls import reverse
 # Create your views here.
 
 from .models import Question
+from .models import Choice
 
 def index(request):  # reques es un objeto tipo HttpRequest ?           
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -29,4 +30,15 @@ def results(request, question_id):
 
 
 def vote(request, question_id):
-    return HttpResponse("Estas votando la pregunta %s." % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': 'No seleccionaste una opción',
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+    return HttpResponseRedirect(reverse('polls:results',args=(question.id,)))
