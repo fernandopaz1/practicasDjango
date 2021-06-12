@@ -112,6 +112,9 @@ DATABASES = {
         'PASSWORD': env.str('DATABASE_PASSWORD'),
         'HOST': env.str('DATABASE_HOST'),
         'PORT': env.str('DATABASE_PORT'),
+        'TEST': {
+            'NAME': 'test_django',
+        },
     }
 }
 
@@ -142,7 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'America/Buenos_Aires'   # Zona horaria de Buenos Aires 
 
