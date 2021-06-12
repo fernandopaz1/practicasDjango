@@ -1,6 +1,7 @@
 # Create your models here.
 from django.db import models
 import datetime
+from django.contrib import admin
 from django.utils import timezone
 
 
@@ -14,7 +15,14 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
-    
+
+
+    @admin.display(
+        boolean=True,     # con esto me muestra un tick en vez de true
+        ordering='pub_date', # me los ordena por pub_date
+        description = 'Published recently?', # es el nombrre de la columna
+    )
+
     def was_published_recently(self):
         now = timezone.now()
         return  timezone.now() - datetime.timedelta(days=1) <= self.pub_date <= now
